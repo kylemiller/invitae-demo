@@ -82,7 +82,6 @@ let manager = {
 
     suggestGeneName: function(input, cb) {
         let self = this;
-        //results = coll.find({'Name': { '$regex': ['din', 'i'] }});
 
         let query = {
             'gene': {'$regex':[input, 'i']}
