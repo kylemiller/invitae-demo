@@ -1,0 +1,38 @@
+{
+  "name": "node-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "start": "node ./bin/www",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "async": "^3.1.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "line-reader": "^0.4.0",
+    "lokijs": "^1.5.7",
+    "mocha": "^6.2.0",
+    "morgan": "~1.9.1",
+    "npm": "^6.10.2",
+    "react": "^16.8.6",
+    "react-bootstrap-table-next": "^3.1.7",
+    "react-dom": "^16.8.6",
+    "underscore": "^1.9.1",
+    "wolfy87-eventemitter": "^5.2.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.1.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
+}
