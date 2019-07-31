@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
 import API from "./API";
 
+/**
+ * Using code from https://alligator.io/react/react-autocomplete/
+ */
 class Autocomplete extends Component {
 
     static defaultProps = {
@@ -161,13 +164,19 @@ class Autocomplete extends Component {
 
         return (
             <Fragment>
-                <input
-                    type="text"
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={userInput}
-                />
-                {suggestionsListComponent}
+                <div className="form-group">
+                    <label htmlFor="gene-entry-input" className="control-label">Enter Gene Name</label>
+                    <input
+                        id="gene-entry-input"
+                        type="text"
+                        onChange={onChange}
+                        onKeyDown={onKeyDown}
+                        value={userInput}
+                        placeholder="Gene name"
+                        style={{marginLeft: "1em"}}
+                    />
+                    {suggestionsListComponent}
+                </div>
             </Fragment>
         );
     }

@@ -1,0 +1,9 @@
+.gene-list-group-item {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.gene-table-header {
+    background-color: #2c6baa;
+    color: white;
+}

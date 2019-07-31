@@ -41,6 +41,12 @@ class ResultsTable extends React.Component {
                 source:row[0].source,
                 url:row[0].url
             };
+            if(_row.lastUpdated.indexOf(' ') > 0) {
+                _row.lastUpdated = _row.lastUpdated.substr(0, _row.lastUpdated.indexOf(' '));
+            }
+            if(_row.lastEvaluated.indexOf(' ') > 0) {
+                _row.lastEvaluated = _row.lastEvaluated.substr(0, _row.lastEvaluated.indexOf(' '));
+            }
             if(row.length > 1) {
                 //multiple nucleotideChanges
                 _row.ncAry = _.without(_.unique(_.pluck(row, 'nucleotideChange')), "");
@@ -65,7 +71,7 @@ class ResultsTable extends React.Component {
 
     ncFormatter(cell, row) {
         if(row.ncAry) {
-            return (<span><ul>{row.ncAry.map((nc) => <li key={nc}>{nc}</li>)}</ul></span>);
+            return (<span><ul className="list-group list-group-flush">{row.ncAry.map((nc) => <li key={nc} className="gene-list-group-item">{nc}</li>)}</ul></span>);
         } else {
             return (<span>{cell}</span>);
         }
@@ -114,9 +120,11 @@ class ResultsTable extends React.Component {
                     keyField="id"
                     data={ this.state.variants }
                     columns={ columns }
+                    headerClasses={"gene-table-header"}
                     striped
                     hover
                     condensed
+                    bootstrap4
                 />
             </div>
         );

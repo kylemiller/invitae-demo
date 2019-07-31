@@ -24806,6 +24806,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+/**
+ * Using code from https://alligator.io/react/react-autocomplete/
+ */
 
 var Autocomplete =
 /*#__PURE__*/
@@ -24964,12 +24967,22 @@ function (_Component) {
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "gene-entry-input",
+        className: "control-label"
+      }, "Enter Gene Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "gene-entry-input",
         type: "text",
         onChange: onChange,
         onKeyDown: onKeyDown,
-        value: userInput
-      }), suggestionsListComponent);
+        value: userInput,
+        placeholder: "Gene name",
+        style: {
+          marginLeft: "1em"
+        }
+      }), suggestionsListComponent));
     }
   }]);
 
@@ -25121,6 +25134,14 @@ function (_React$Component) {
           url: row[0].url
         };
 
+        if (_row.lastUpdated.indexOf(' ') > 0) {
+          _row.lastUpdated = _row.lastUpdated.substr(0, _row.lastUpdated.indexOf(' '));
+        }
+
+        if (_row.lastEvaluated.indexOf(' ') > 0) {
+          _row.lastEvaluated = _row.lastEvaluated.substr(0, _row.lastEvaluated.indexOf(' '));
+        }
+
         if (row.length > 1) {
           //multiple nucleotideChanges
           _row.ncAry = underscore__WEBPACK_IMPORTED_MODULE_3___default.a.without(underscore__WEBPACK_IMPORTED_MODULE_3___default.a.unique(underscore__WEBPACK_IMPORTED_MODULE_3___default.a.pluck(row, 'nucleotideChange')), "");
@@ -25151,9 +25172,12 @@ function (_React$Component) {
     key: "ncFormatter",
     value: function ncFormatter(cell, row) {
       if (row.ncAry) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, row.ncAry.map(function (nc) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "list-group list-group-flush"
+        }, row.ncAry.map(function (nc) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: nc
+            key: nc,
+            className: "gene-list-group-item"
           }, nc);
         })));
       } else {
@@ -25199,9 +25223,11 @@ function (_React$Component) {
         keyField: "id",
         data: this.state.variants,
         columns: columns,
+        headerClasses: "gene-table-header",
         striped: true,
         hover: true,
-        condensed: true
+        condensed: true,
+        bootstrap4: true
       }));
     }
   }]);
